@@ -1,7 +1,7 @@
 ofxColorMap
 ===========
 
-Colorize your grayscale images with a linear segmented color map, as used in scientific plotting. Maps are taken from [http://matplotlib.org/](Matplotlib).
+Colorize your grayscale images with a linear segmented color map, as used in scientific plotting. Maps are taken from [Matplotlib](http://matplotlib.org/).
 
 
 ## Usage
