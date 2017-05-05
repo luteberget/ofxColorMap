@@ -52,7 +52,7 @@ void testApp::setup(){
     colormap.setMapFromName(defaultmap);
 
     // Demo image with horizontal 0 -> 1 scale.
-    unsigned char* p = demoimg.getPixels();
+    ofPixels& p = demoimg.getPixels();
     for(int x = 0; x < demoimg.getWidth(); x++) {
         for(int y = 0; y < demoimg.getHeight(); y++) {
             int value = 255*(float)x/demoimg.getWidth();
@@ -66,7 +66,7 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 	// Perlin noise image
-    unsigned char* p = noiseimg.getPixels();
+    ofPixels& p = noiseimg.getPixels();
     for(int x = 0; x < noiseimg.getWidth(); x++) {
         for(int y = 0; y < noiseimg.getHeight(); y++) {
             int value = 255*ofNoise(x/100.0,y/100.0,ofGetElapsedTimef()*0.1);
