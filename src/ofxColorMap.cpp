@@ -69,8 +69,8 @@ void ofxColorMap::apply(ofImage& img1, ofImage& img2)
     assert(img1.getWidth() == img2.getWidth());
     assert(img1.getHeight() == img2.getHeight());
 
-    unsigned char* p1 = img1.getPixels();
-    unsigned char* p2 = img2.getPixels();
+    ofPixels& p1 = img1.getPixels();
+    ofPixels& p2 = img2.getPixels();
 
     for(int i = 0; i < img1.getWidth()*img1.getHeight(); i++) {
         ofColor c = use(p1[i]);
