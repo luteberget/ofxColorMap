@@ -7,14 +7,14 @@ ofxColorMap::ofxColorMap() {
     setMapFromName("gray");
 }
 
-void ofxColorMap::makeLookupTable1D(const ColorMapChannel& data, LookupTable& table, int n, float gamma)
+void ofxColorMap::makeLookupTable1D(const ColorMapChannel& data, LookupTable& table, size_t n, float gamma)
 {
     // TODO: check validity of data (start with 0, ends with 1, strictly increasing)
     table.resize(n);
 
-    int idx = 0;
+    size_t idx = 0;
 
-    for(int i = 0; i < n; i++) {
+    for(size_t i = 0; i < n; i++) {
         float r = (float)i/(n-1);
 
         assert(r >= data[idx].x); // data[0].x should be 0.0.
@@ -53,7 +53,7 @@ void ofxColorMap::setMap(const ColorMap& m)
 {
     lookup.clear();
     assert(m.size() == 3); // RGB, 3 channels.
-    for(int i = 0; i < m.size(); i++) {
+    for(size_t i = 0; i < m.size(); i++) {
         const ColorMapChannel& c = m[i];
         LookupTable t;
         makeLookupTable1D(c,t,NCOLORS);
@@ -72,7 +72,7 @@ void ofxColorMap::apply(ofImage& img1, ofImage& img2)
     ofPixels& p1 = img1.getPixels();
     ofPixels& p2 = img2.getPixels();
 
-    for(int i = 0; i < img1.getWidth()*img1.getHeight(); i++) {
+    for(size_t i = 0; i < img1.getWidth()*img1.getHeight(); i++) {
         ofColor c = use(p1[i]);
 
         p2[3*i+0] = c.r;

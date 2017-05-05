@@ -11,7 +11,7 @@ public:
     typedef vector<ofVec3f> ColorMapChannel;
     typedef vector<ColorMapChannel> ColorMap;
 
-    static void makeLookupTable1D(const ColorMapChannel& data, LookupTable& table, int n, float gamma = 1.0f);
+    static void makeLookupTable1D(const ColorMapChannel& data, LookupTable& table, size_t n, float gamma = 1.0f);
 
     void setMapFromName(string name);
     void setMapFromIndex(int n);

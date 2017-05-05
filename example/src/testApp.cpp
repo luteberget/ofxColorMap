@@ -8,7 +8,7 @@ void testApp::setup(){
     demoimg.allocate(ofGetWidth()/2,ofGetHeight()/4,OF_IMAGE_GRAYSCALE);
     colordemoimg.allocate(ofGetWidth()/2,ofGetHeight()/4,OF_IMAGE_COLOR);
 
-    int columnwidth = 0;
+    size_t columnwidth = 0;
     for(map<string,ofxColorMap::ColorMap>::const_iterator it = colormap.namedMaps.begin();
                 it != colormap.namedMaps.end(); it++) {
         const string& name = it->first;
@@ -53,8 +53,8 @@ void testApp::setup(){
 
     // Demo image with horizontal 0 -> 1 scale.
     ofPixels& p = demoimg.getPixels();
-    for(int x = 0; x < demoimg.getWidth(); x++) {
-        for(int y = 0; y < demoimg.getHeight(); y++) {
+    for(size_t x = 0; x < demoimg.getWidth(); x++) {
+        for(size_t y = 0; y < demoimg.getHeight(); y++) {
             int value = 255*(float)x/demoimg.getWidth();
             p[(int)(x+y*demoimg.getWidth())] = value;
         }
@@ -67,8 +67,8 @@ void testApp::setup(){
 void testApp::update(){
 	// Perlin noise image
     ofPixels& p = noiseimg.getPixels();
-    for(int x = 0; x < noiseimg.getWidth(); x++) {
-        for(int y = 0; y < noiseimg.getHeight(); y++) {
+    for(size_t x = 0; x < noiseimg.getWidth(); x++) {
+        for(size_t y = 0; y < noiseimg.getHeight(); y++) {
             int value = 255*ofNoise(x/100.0,y/100.0,ofGetElapsedTimef()*0.1);
             p[(int)(x+y*noiseimg.getWidth())] = value;
         }
@@ -89,7 +89,7 @@ void testApp::draw(){
 
     ofColor active(0,255*0.4,0);
     ofColor notactive(0,0,0);
-    for(int i = 0; i < boxes.size(); i++) {
+    for(size_t i = 0; i < boxes.size(); i++) {
         ofDrawBitmapStringHighlight(boxes[i].text, boxes[i].box.x, boxes[i].box.y+14, boxes[i].active?active:notactive);
     }
 
@@ -118,7 +118,7 @@ void testApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
 	bool clicked = false;
-    for(int i = 0; i < boxes.size(); i++) {
+    for(size_t i = 0; i < boxes.size(); i++) {
 	    if(boxes[i].box.inside(x,y)) {
 		    clicked = true;
 		    currentmap = boxes[i].text;
@@ -126,7 +126,7 @@ void testApp::mousePressed(int x, int y, int button){
     }
 
     if(clicked) {
-	    for(int i = 0; i < boxes.size(); i++) {
+	    for(size_t i = 0; i < boxes.size(); i++) {
 		    boxes[i].active = (boxes[i].text == currentmap);
 	    }
 
